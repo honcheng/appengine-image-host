@@ -4,12 +4,12 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: /assets
-  static_dir: assets
+- url: /imagehost/assets
+  static_dir: appengineimagehost/assets
   
-- url: /i/(img|thumb).*
-  script: frontend.py
+- url: /imagehost/i/(img|thumb).*
+  script: appengineimagehost/frontend.py
 
-- url: /.*
-  script: backend.py
+- url: /imagehost/.*
+  script: appengineimagehost/backend.py
   login: admin

@@ -10,19 +10,16 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Unused in query history -- copied from input.
 - kind: Greeting
   properties:
   - name: date
     direction: desc
 
-# Unused in query history -- copied from input.
 - kind: Image
   properties:
   - name: date
     direction: desc
 
-# Used once in query history.
 - kind: Image
   properties:
   - name: user

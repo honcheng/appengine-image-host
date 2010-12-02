@@ -12,7 +12,7 @@ from google.appengine.api import images
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
 
-from models import Image
+from appengineimagehost.models import Image
 
 class Index(webapp.RequestHandler):
     """
@@ -57,7 +57,7 @@ class Deleter(webapp.RequestHandler):
             if image.user == user:
                 image.delete()
         # whatever happens rediect back to the main admin view
-        self.redirect('/')
+        self.redirect('/imagehost/')
        
 class Uploader(webapp.RequestHandler):
     "Deals with uploading new images to the datastore"
@@ -68,7 +68,7 @@ class Uploader(webapp.RequestHandler):
 
         # if we don't have image data we'll quit now
         if not img:
-            self.redirect('/')
+            self.redirect('/imagehost/')
             return 
             
         # we have image data
@@ -103,13 +103,13 @@ class Uploader(webapp.RequestHandler):
         # store the image in the datasore
         image.put()
         # and redirect back to the admin page
-        self.redirect('/')
+        self.redirect('/imagehost/')
                 
 # wire up the views
 application = webapp.WSGIApplication([
-    ('/', Index),
-    ('/upload', Uploader),
-    ('/delete', Deleter)
+    ('/imagehost/', Index),
+    ('/imagehost/upload', Uploader),
+    ('/imagehost/delete', Deleter)
 ], debug=True)
 
 def main():

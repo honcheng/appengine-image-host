@@ -10,7 +10,7 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-from models import Image
+from appengineimagehost.models import Image
   
 class GenericServer(webapp.RequestHandler):
     """
@@ -53,8 +53,8 @@ class OriginalServer(GenericServer):
     property = 'original'
 
 application = webapp.WSGIApplication([
-    ('/i/img', ImageServer),
-    ('/i/thumb', ThumbServer),
+    ('/imagehost/i/img', ImageServer),
+    ('/imagehost/i/thumb', ThumbServer),
 ], debug=True)
 
 def main():
